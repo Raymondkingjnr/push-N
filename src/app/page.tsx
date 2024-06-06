@@ -1,31 +1,6 @@
-"use client";
 import Image from "next/image";
-import { useEffect } from "react";
-import { generateToken, messaging } from "./firebase";
-import { onMessage, MessagePayload } from "firebase/messaging";
-import toast from "react-hot-toast";
-
-type NotificationPayload = {
-  notification?: {
-    body?: string;
-  };
-};
 
 export default function Home() {
-  useEffect(() => {
-    generateToken();
-    onMessage(messaging, (payload: MessagePayload & NotificationPayload) => {
-      console.log(payload);
-      const body = payload?.notification?.body;
-
-      if (body) {
-        toast(body);
-      } else {
-        toast.error("notification body is undefined");
-      }
-    });
-  }, []);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
