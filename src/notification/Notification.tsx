@@ -1,6 +1,6 @@
 "use client";
 
-import { generateToken, messaging } from "../notification/firebase";
+import { generateToken, messaging } from "./firebase";
 import { onMessage, MessagePayload } from "firebase/messaging";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
@@ -11,7 +11,7 @@ type NotificationPayload = {
   };
 };
 
-const Notification = () => {
+export default function Notification() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Only run in the browser
@@ -28,7 +28,5 @@ const Notification = () => {
     }
   }, []);
 
-  return <h1></h1>;
-};
-
-export default Notification;
+  return <h1> </h1>;
+}
