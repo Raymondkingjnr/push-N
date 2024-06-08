@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
-// import Notification from "../notification/notification";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import Notification from "../../notification/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Toaster position="top-right" />
-      <body className={inter.className}>{children}</body>
-      {/* <Notification /> */}
+      <body className={inter.className}>
+        <ToastContainer />
+        {children}
+      </body>
     </html>
   );
 }
