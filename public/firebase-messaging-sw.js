@@ -23,6 +23,18 @@ firebase.initializeApp({
 // messages.
 const messaging = firebase.messaging();
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/firebase-messaging-sw.js")
+    .then((registration) => {
+      console.log("Service Worker registered with scope:", registration.scope);
+      messaging.useServiceWorker(registration);
+    })
+    .catch((error) => {
+      console.log("Service Worker registration failed:", error);
+    });
+}
+
 // Handle incoming messages. Called when:
 // - a message is received while the app has focus
 // - the user clicks on an app notification created by a service worker
