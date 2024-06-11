@@ -11,7 +11,7 @@ import useFCMToken from "./useFCMToken";
 import { toast } from "react-toastify";
 
 const useFCM = () => {
-  const fcmToken = useFCMToken();
+  const { fcmToken } = useFCMToken();
   // const [messages, setMessages] = useState<MessagePayload[]>([]);
 
   useEffect(() => {
